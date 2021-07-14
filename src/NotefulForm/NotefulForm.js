@@ -42,6 +42,9 @@ export default class NotefulForm extends React.Component {
     };
 
     API.post(`notes`, note).then(() => {
+      if (typeof this.props.updateData === 'function') {
+        this.props.updateData()
+      }
       this.props.history.push('/')
     });
   }
