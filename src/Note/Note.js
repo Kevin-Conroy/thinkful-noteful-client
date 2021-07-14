@@ -7,8 +7,11 @@ import './Note.css'
 
 export default function Note(props) {
   const removeNote = (id) => {
-    API.delete(`notes?id=${id}`).then(() => {
-      this.props.history.push('/')
+    API.delete(`notes/${id}`).then(() => {
+      if (typeof props.updateData === 'function') {
+        props.updateData()
+      }
+      props.history.push('/')
     });
   };
 
