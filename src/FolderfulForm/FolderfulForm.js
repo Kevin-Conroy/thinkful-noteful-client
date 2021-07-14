@@ -19,6 +19,9 @@ export default class FolderfulForm extends React.Component {
     };
 
     API.post(`folders`, folder).then(() => {
+      if (typeof this.props.updateData === 'function') {
+        this.props.updateData()
+      }
       this.props.history.push('/')
     });
   }
