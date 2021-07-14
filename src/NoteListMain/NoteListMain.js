@@ -12,9 +12,11 @@ export default function NoteListMain(props) {
         {props.notes.map(note =>
           <li key={note.id}>
             <Note
+              {...props}
               id={note.id}
               name={note.name}
               modified={note.modified}
+              updateData={props.updateData}
             />
           </li>
         )}
